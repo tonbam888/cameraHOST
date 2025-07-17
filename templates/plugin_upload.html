@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Загрузка плагина</title>
+    <link rel="icon" href="/static/img/favicon.ico">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: #f0f7ff;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .admin-container {
+            max-width: 500px;
+            width: 100%;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 90, 180, 0.1);
+            overflow: hidden;
+        }
+
+        header {
+            padding: 20px;
+            background: #1e88e5;
+            color: white;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 1.5rem;
+            font-weight: 500;
+        }
+
+        .content {
+            padding: 25px 20px;
+        }
+
+        .instructions {
+            background: #f8fbff;
+            padding: 15px;
+            border-radius: 6px;
+            margin-bottom: 20px;
+            border: 1px solid #d0e3ff;
+        }
+
+        .instructions h3 {
+            margin-bottom: 10px;
+            color: #1565c0;
+        }
+
+        .instructions ul {
+            padding-left: 20px;
+            color: #333;
+        }
+
+        .instructions li {
+            margin-bottom: 5px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: #333;
+        }
+
+        .form-group input[type="file"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #d0e3ff;
+            border-radius: 4px;
+        }
+
+        .btn {
+            background: #1e88e5;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 1rem;
+            width: 100%;
+        }
+
+        .btn:hover {
+            background: #1565c0;
+        }
+
+        .btn.back {
+            background: #78909c;
+            margin-top: 15px; /* Добавлен отступ сверху */
+        }
+
+        .btn.back:hover {
+            background: #546e7a;
+        }
+
+        .error {
+            color: #d32f2f;
+            margin: 15px 0; /* Увеличен отступ */
+            text-align: center;
+            padding: 10px;
+            background: #ffebee;
+            border-radius: 4px;
+        }
+
+        .action-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 10px; /* Добавлен промежуток между кнопками */
+            margin-top: 15px; /* Отступ от формы */
+        }
+
+        .footer {
+            padding: 15px;
+            text-align: center;
+            color: #666;
+            font-size: 0.85rem;
+            border-top: 1px solid #eee;
+        }
+    </style>
+</head>
+<body>
+    <div class="admin-container">
+        <header>
+            <h1>Загрузка плагина</h1>
+        </header>
+
+        <div class="content">
+            <div class="instructions">
+                <h3>Требования к плагину:</h3>
+                <ul>
+                    <li>Должен быть упакован в ZIP-архив</li>
+                    <li>Должен содержать одну папку верхнего уровня (название плагина)</li>
+                    <li>Внутри папки должны быть файлы <code>plugin.py</code> и <code>config.json</code></li>
+                    <li>Дополнительные файлы (шаблоны, статика) размещайте внутри папки плагина</li>
+                </ul>
+            </div>
+
+            <form method="POST" enctype="multipart/form-data">
+                <div class="form-group">
+                    <label for="plugin_file">Выберите ZIP-архив с плагином:</label>
+                    <input type="file" name="plugin_file" id="plugin_file" accept=".zip" required>
+                </div>
+
+                <button type="submit" class="btn">Загрузить плагин</button>
+
+                {% if error %}
+                    <div class="error">{{ error }}</div>
+                {% endif %}
+            </form>
+
+            <div class="action-buttons">
+                <a href="/admin/plugins" class="btn back">Вернуться к списку плагинов</a>
+                <a href="/admin" class="btn back">Вернуться в админ-панель</a>
+            </div>
+        </div>
+
+        <div class="footer">
+            Версия 1.4
+        </div>
+    </div>
+</body>
+</html>
