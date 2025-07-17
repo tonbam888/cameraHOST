@@ -7,7 +7,7 @@ System Architecture
 <img width="4355" height="1415" alt="deepseek_mermaid_20250717_b41cf4" src="https://github.com/user-attachments/assets/2f395027-d94b-48e7-a496-22bd33bfa536" />
 
 # Clone the repository
-git clone https://github.com/tonbam888/cameraHOST/.git
+git clone https://github.com/tonbam888/cameraHOST.git
 
 # Install
 1. chmod +x ./install.sh
