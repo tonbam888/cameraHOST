@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Подтверждение перезагрузки</title>
+    <link rel="icon" href="/static/img/favicon.ico">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: #f0f7ff;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 500px;
+            width: 100%;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 90, 180, 0.1);
+            padding: 30px;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 1.5rem;
+            color: #d32f2f;
+            margin-bottom: 20px;
+        }
+
+        .warning {
+            font-size: 3rem;
+            color: #d32f2f;
+            margin: 15px 0;
+        }
+
+        p {
+            margin-bottom: 15px;
+            color: #333;
+            line-height: 1.5;
+        }
+
+        .btn-group {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            margin-top: 25px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 12px 30px;
+            border: none;
+            border-radius: 4px;
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s;
+            min-width: 180px;
+        }
+
+        .btn-danger {
+            background: #d32f2f;
+            color: white;
+        }
+
+        .btn-danger:hover {
+            background: #b71c1c;
+        }
+
+        .btn-secondary {
+            background: #6c757d;
+            color: white;
+        }
+
+        .btn-secondary:hover {
+            background: #5a6268;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-top: 25px;
+            color: #1e88e5;
+            text-decoration: none;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Подтверждение перезагрузки</h1>
+        <div class="warning">⚠️</div>
+        <p>Вы собираетесь перезагрузить устройство. Все текущие соединения будут разорваны.</p>
+        <p><strong>Вы уверены, что хотите продолжить?</strong></p>
+
+        <div class="btn-group">
+            <form action="/restart" method="post">
+                <button type="submit" class="btn btn-danger">Да, перезагрузить</button>
+            </form>
+            <a href="/admin" class="btn btn-secondary">Отмена</a>
+        </div>
+
+        <a href="/admin" class="back-link">Назад в панель управления</a>
+    </div>
+</body>
+</html>

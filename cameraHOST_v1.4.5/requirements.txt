@@ -1,0 +1,6 @@
+flask
+opencv-python-headless
+bcrypt
+schedule
+requests
+psutil
